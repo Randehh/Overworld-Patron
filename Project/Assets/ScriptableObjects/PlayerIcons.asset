@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4547b2378ab083140898000b4898b991, type: 3}
+  m_Name: PlayerIcons
+  m_EditorClassIdentifier: 
+  deathIcon: {fileID: 21300000, guid: 9b667841d1ffe0f47900eba7b470aa1c, type: 3}
+  questingIcon: {fileID: 21300000, guid: 61a57f1139c7a3944b04c754b5a31e13, type: 3}
+  idleIcon: {fileID: 21300000, guid: 2299de5e2db95834d93ba7890553ff40, type: 3}
+  unknownIcon: {fileID: 21300000, guid: c0a00cedda597be4bafa086d38117d9e, type: 3}
+  woundedIcon: {fileID: 21300000, guid: 2774310386d4b9642be4a70b3b65ad79, type: 3}
