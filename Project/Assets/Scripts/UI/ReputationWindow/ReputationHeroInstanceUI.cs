@@ -58,11 +58,11 @@ namespace Rondo.QuestSim.UI.Reputation {
 
         private void UpdateProgressInstant() {
             if(Hero != null) {
-                //nameText.text = Hero.DisplayName;
+                nameText.text = Hero.DisplayName;
                 SetExperience(Hero.Experience);
             } else {
-                //nameText.text = "-";
-                //classText.text = "-";
+                nameText.text = "-";
+                classText.text = "-";
                 levelProgressFill.localScale = new Vector3(0, levelProgressFill.localScale.y, levelProgressFill.localScale.z);
             }
         }
@@ -81,7 +81,7 @@ namespace Rondo.QuestSim.UI.Reputation {
             float levelProgress;
             HeroUtility.CalculateHeroLevel(m_CurrentExperience, out level, out expForNextLevel, out levelProgress);
 
-            //classText.text = Hero.GetClassProgress(level);
+            classText.text = Hero.GetClassProgress(level);
             levelProgressFill.localScale = new Vector3(levelProgress, levelProgressFill.localScale.y, levelProgressFill.localScale.z);
         }
 

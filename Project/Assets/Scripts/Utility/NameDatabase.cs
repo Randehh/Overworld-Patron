@@ -300,7 +300,10 @@ namespace Rondo.QuestSim.Utility {
                 case GameItemRarity.EPIC:
                     return "Masterwork " + typeString;
                 case GameItemRarity.LEGENDARY:
-                    return GetCompoundName() + ", " + typeString + " of " + GetTerritoryName();
+					bool useAdjective = Random.Range(0, 2) == 0;
+					string adjective = useAdjective ? GetAdjective() + " " : "";
+
+					return GetCompoundName() + ", " + adjective + typeString + " of " + GetTerritoryName();
             }
         }
 
@@ -496,5 +499,23 @@ namespace Rondo.QuestSim.Utility {
 
             return firstName.ToCamelCase() + " " + surName.ToCamelCase();
         }
-    }
+
+		public static string GetAdjective() {
+			string[] adjective = new string[] {
+				"Stone",
+				"Grass",
+				"Frost",
+				"Onyx",
+				"Ender",
+				"Cunning",
+				"Earth",
+				"Bronze",
+				"Wind",
+				"Steel",
+				"Wood",
+				"Nameless"
+			 };
+			return adjective[Random.Range(0, adjective.Length)];
+		}
+	}
 }

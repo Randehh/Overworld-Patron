@@ -52,7 +52,6 @@ namespace Rondo.QuestSim.UI.PostedQuests {
         }
 
         void Start() {
-			return;
             heroGoldRewardInput.onValueChanged.AddListener((value) => {
                 if (string.IsNullOrEmpty(value)) {
                     value = "0";

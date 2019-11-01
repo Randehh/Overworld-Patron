@@ -40,6 +40,7 @@ namespace Rondo.QuestSim.UI.PostedQuests {
 
         [Header("Parents")]
         public RectTransform parentHeroes;
+		public RectTransform parentSuccess;
 
         public Action OnWindowClose = delegate { };
 
@@ -179,8 +180,9 @@ namespace Rondo.QuestSim.UI.PostedQuests {
                     acceptButton.gameObject.SetActive(false);
                     completeButton.gameObject.SetActive(false);
                     postButton.gameObject.SetActive(true);
+					parentSuccess.gameObject.SetActive(false);
 
-                    RefreshItemRewardDropdown();
+					RefreshItemRewardDropdown();
                     SetNoHero();
                     CheckPostButtonStatus();
 
@@ -198,8 +200,9 @@ namespace Rondo.QuestSim.UI.PostedQuests {
                     acceptButton.gameObject.SetActive(true);
                     completeButton.gameObject.SetActive(false);
                     postButton.gameObject.SetActive(false);
+					parentSuccess.gameObject.SetActive(true);
 
-                    foreach (QuestDetailsHero heroSection in m_HeroSections) {
+					foreach (QuestDetailsHero heroSection in m_HeroSections) {
                         if (!heroSection.gameObject.activeSelf) break;
                         m_FocusBoxes.Add(FocusBoxManager.Instance.SetFocusTarget(heroSection.heroParent));
                     }
@@ -212,8 +215,9 @@ namespace Rondo.QuestSim.UI.PostedQuests {
                     acceptButton.gameObject.SetActive(false);
                     completeButton.gameObject.SetActive(false);
                     postButton.gameObject.SetActive(false);
+					parentSuccess.gameObject.SetActive(false);
 
-                    SetNoHero();
+					SetNoHero();
                     break;
                 case QuestDetailsWindowMode.ACTIVE_REVIEW:
                     closeButton.gameObject.SetActive(true);
@@ -222,8 +226,9 @@ namespace Rondo.QuestSim.UI.PostedQuests {
                     acceptButton.gameObject.SetActive(false);
                     completeButton.gameObject.SetActive(false);
                     postButton.gameObject.SetActive(false);
+					parentSuccess.gameObject.SetActive(true);
 
-                    FindActiveHero();
+					FindActiveHero();
                     break;
                 case QuestDetailsWindowMode.COMPLETED:
                     closeButton.gameObject.SetActive(false);
@@ -232,8 +237,9 @@ namespace Rondo.QuestSim.UI.PostedQuests {
                     acceptButton.gameObject.SetActive(false);
                     completeButton.gameObject.SetActive(true);
                     postButton.gameObject.SetActive(false);
+					parentSuccess.gameObject.SetActive(true);
 
-                    FindActiveHero();
+					FindActiveHero();
                     break;
             }
 

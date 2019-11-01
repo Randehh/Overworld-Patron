@@ -26,7 +26,7 @@ namespace Rondo.QuestSim.UI.Reputation {
         }
 
         public void ApplyReputation(ReputationTracker tracker) {
-            //nameText.text = tracker.FactionInstance.DisplayName;
+            nameText.text = tracker.FactionInstance.DisplayName;
             m_Tracker = tracker;
             UpdateProgress();
 
@@ -34,11 +34,11 @@ namespace Rondo.QuestSim.UI.Reputation {
         }
 
         private void UpdateProgress() {
-            //reputationLevelText.text = m_Tracker.ReputationLevel.ToString();
+            reputationLevelText.text = m_Tracker.ReputationLevel.ToString();
             float levelProgress = m_Tracker.ReputationLevelProgress;
             string levelProgressText = (levelProgress * 100).ToString();
             if (levelProgressText.Contains(".")) levelProgressText = levelProgressText.Split('.')[0];
-            //reputationProgressText.text = levelProgressText + "%";
+            reputationProgressText.text = levelProgressText + "%";
             reputationProgressFill.localScale = new Vector3(levelProgress, reputationProgressFill.localScale.y, reputationProgressFill.localScale.z);
         }
 
