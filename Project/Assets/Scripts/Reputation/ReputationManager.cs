@@ -50,7 +50,6 @@ namespace Rondo.QuestSim.Reputation {
             if (!m_ReputationDictionary.ContainsKey(faction)) return null;
             return m_ReputationDictionary[faction];
         }
-
     }
 
 }

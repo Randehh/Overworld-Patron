@@ -1,4 +1,5 @@
 ﻿using Rondo.QuestSim.Reputation;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,12 @@ using UnityEngine;
 namespace Rondo.QuestSim.Quests {
 
     public interface IQuestSource {
-        string DisplayName { get; set; }
-        string RequestTitle { get; }
+		string DisplayName { get; set; }
+		string RequestTitle { get; }
 
-        int QuestDifficulty { get; }
+		int QuestDifficulty { get; }
 
-        void GenerateSettings();
+		void GenerateSettings();
     }
 
 }

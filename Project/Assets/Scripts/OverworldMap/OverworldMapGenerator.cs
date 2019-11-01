@@ -1,8 +1,6 @@
 ﻿using Rondo.Generic.Utility;
 using Rondo.QuestSim.Quests.Sources;
 using Rondo.QuestSim.Reputation;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +18,6 @@ namespace Rondo.QuestSim.Overworld {
 			m_CurrentFactions = ReputationManager.GetAllFactions();
 
 			GenerateCapitalCities(map, settings);
-			map.CalculateFactionPresences();
 			GenerateMapTexture(map, settings);
 
 			map.GetMapTexture().name = "Map_" + m_CurrentMapCount;
