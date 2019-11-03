@@ -81,6 +81,10 @@ namespace Rondo.QuestSim.Overworld {
 			return m_MapTexture;
 		}
 
+		public Dictionary<QuestSourceFaction, Vector2> GetFactionCapitals() {
+			return m_FactionCapitalLocations;
+		}
+
 		public OverworldMapPresence GetStrongestFactionPresence(int x, int y) {
 			Vector2 normalizedMapLocation = GetZoomPosition(x, y);
 
