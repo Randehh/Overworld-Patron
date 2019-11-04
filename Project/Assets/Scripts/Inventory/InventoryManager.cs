@@ -30,7 +30,7 @@ namespace Rondo.QuestSim.Inventory {
             for (int i = 0; i < 2; i++) {
                 OwnedItems.Add(GameItemGenerator.GenerateItem(GameItemTypes.UNKNOWN, GameItemRarity.UNCOMMON, UnityEngine.Random.Range(0f, 1f)));
             }
-        }
+		}
 
         public static void MoveItemToReserved(GameItem item) {
             if (!OwnedItems.Contains(item)) return;

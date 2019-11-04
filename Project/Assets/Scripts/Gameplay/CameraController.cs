@@ -8,27 +8,35 @@ namespace Rondo.QuestSim.Gameplay {
     public class CameraController : MonoBehaviourSingleton<CameraController> {
 
         public Transform target;
+		public Transform targetLookAt;
         public float followSpeed = 0.1f;
-        public Vector3 offset = new Vector3(0, 15, -15);
 
-        private Camera m_Camera;
-        private Vector3 m_LookatTarget;
-
-        private void Awake() {
-            m_Camera = GetComponent<Camera>();
-            m_LookatTarget = target.position;
-        }
+		private float m_CurrentFollowSpeed = 0;
 
         private void Start() {
-            transform.position = target.position + offset;
+			m_CurrentFollowSpeed = followSpeed;
+
+			transform.position = target.position;
         }
 
-        void FixedUpdate() {
-            Vector3 targetPos = target.position;
-            transform.position = Vector3.Lerp(transform.position, targetPos + offset, followSpeed);
+		public void SetTarget(Transform t) {
+			target = t;
+		}
+		
+		public void SetFollowSpeed(float speed) {
+			followSpeed = speed;
+		}
 
-            m_LookatTarget = Vector3.Lerp(m_LookatTarget, targetPos, followSpeed * 1.5f);
-            transform.LookAt(m_LookatTarget);
+        void FixedUpdate() {
+			m_CurrentFollowSpeed = Mathf.Lerp(m_CurrentFollowSpeed, followSpeed, 0.5f);
+
+            transform.position = Vector3.Lerp(transform.position, target.position, m_CurrentFollowSpeed);
+
+			if (targetLookAt != null) {
+				transform.LookAt(targetLookAt);
+			} else {
+				transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, m_CurrentFollowSpeed);
+			}
         }
     }
 

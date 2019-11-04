@@ -8,7 +8,7 @@ namespace Rondo.QuestSim.Overworld {
 	public static class OverworldMapGenerator {
 
 		public const int LAND_COUNT_MIN = 2;
-		public const int LAND_COUNT_MAX = 5;
+		public const int LAND_COUNT_MAX = 10;
 
 		private static int m_CurrentMapCount = 0;
 		private static List<QuestSourceFaction> m_CurrentFactions;
@@ -103,6 +103,8 @@ namespace Rondo.QuestSim.Overworld {
 			}
 
 			mapTexture.SetPixels32(colorArray);
+			mapTexture.filterMode = FilterMode.Trilinear;
+			mapTexture.anisoLevel = 2;
 			mapTexture.Apply();
 			map.SetMapTexture(mapTexture);
 		}

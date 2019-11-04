@@ -19,11 +19,9 @@ namespace Rondo.QuestSim.Overworld {
 		public RectTransform nameTagTemplate;
 		public Vector2 tagOffset = new Vector2(10, -10);
 
-		private void Awake() {
-			m_RectTransform = GetComponent<RectTransform>();
-		}
-
 		public void SetMap(OverworldMap settings) {
+			m_RectTransform = GetComponent<RectTransform>();
+
 			ClearTags();
 
 			Texture2D mapTexture = settings.GetMapTexture();

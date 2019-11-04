@@ -34,7 +34,7 @@ namespace Rondo.QuestSim.Overworld {
 			for (float x = 0; x <= 1.01f; x += 0.05f) {
 				for (float y = 0; y <= 1.01f; y += 0.05f) {
 					Vector2 position = new Vector2(x, y) + MathUtilities.GetRandomVector2(-0.015f, -0.015f, 0.015f, 0.015f);
-					float radius = UnityEngine.Random.Range(0.015f, 0.1f);
+					float radius = UnityEngine.Random.Range(0.04f, 0.1f);
 					float strength = UnityEngine.Random.Range(1f, 10f);
 					SetFactionLocation(m_WaterFaction, position, radius, strength);
 				}
@@ -90,7 +90,7 @@ namespace Rondo.QuestSim.Overworld {
 
 			foreach (QuestSourceFaction faction in m_FactionCapitalLocations.Keys) {
 				Vector2 factionCapitalLocation = m_FactionCapitalLocations[faction];
-				if (Vector2.Distance(factionCapitalLocation, normalizedMapLocation) <= 0.01f) {
+				if (Vector2.Distance(factionCapitalLocation, normalizedMapLocation) <= 0.005f) {
 					return new OverworldMapPresence(m_CapitalFaction, 1);
 				}
 			}

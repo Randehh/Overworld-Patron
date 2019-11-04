@@ -138,21 +138,6 @@ namespace Rondo.QuestSim.Utility {
         }
 
         public static string GetPointOfInterestName() {
-            string[] partOne = new string[] {
-                "Stone",
-                "Grass",
-                "Frost",
-                "Onyx",
-                "Ender",
-                "Cunning",
-                "Earth",
-                "Bronze",
-                "Wind",
-                "Steel",
-                "Wood",
-                "Nameless"
-             };
-
             string[] partTwo = new string[] {
                 "Estate",
                 "Mansion",
@@ -168,7 +153,7 @@ namespace Rondo.QuestSim.Utility {
                 "Vault",
                 "Haven"
             };
-            return "The " + partOne[Random.Range(0, partOne.Length)] + " " + partTwo[Random.Range(0, partTwo.Length)];
+            return "The " + GetAdjective() + " " + partTwo[Random.Range(0, partTwo.Length)];
         }
 
         public static string GetGroupName() {

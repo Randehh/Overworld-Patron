@@ -15,6 +15,7 @@ namespace Rondo.QuestSim.General {
     public class GameInitializer : MonoBehaviourSingleton<GameInitializer> {
 
 		public OverworldMapDisplay mapDisplay;
+		public OverworldMapDisplay3d mapDisplay3d;
 		public OverworldMapGeneratorSettings generatorSettings;
 
 		[Header("Map generating tests")]
@@ -30,7 +31,8 @@ namespace Rondo.QuestSim.General {
             BlacksmithManager.Initialize();
 
 			mapDisplay.SetMap(OverworldMapManager.mainMap);
-        }
+			mapDisplay3d.SetMap(OverworldMapManager.mainMap);
+		}
 
         private void Start() {
             InventoryManager.Gold = 100;
@@ -48,6 +50,7 @@ namespace Rondo.QuestSim.General {
 		private void GenerateMap(bool saveMap) {
 			OverworldMapManager.Initialize(generatorSettings);
 			mapDisplay.SetMap(OverworldMapManager.mainMap);
+			mapDisplay3d.SetMap(OverworldMapManager.mainMap);
 		}
 
 		private void  SaveTextureToFile(Texture2D texture) {
