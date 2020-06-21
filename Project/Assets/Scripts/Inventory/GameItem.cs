@@ -16,7 +16,7 @@ namespace Rondo.QuestSim.Inventory {
         public int SellPrice { get { return Power / 2; } }
         public int BuyPrice { get { return Power; } }
 
-        public GameItem(GameItemTypes type, GameItemRarity rarity, float quality) {
+        public GameItem(GameItemTypes type, GameItemRarity rarity) {
             ItemType = type;
             Rarity = rarity;
 

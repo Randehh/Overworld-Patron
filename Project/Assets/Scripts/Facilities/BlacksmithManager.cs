@@ -45,7 +45,7 @@ namespace Rondo.QuestSim.Facilities {
             }
 
             for (int i = 0; i < ItemsPerDay; i++) {
-                GameItem item = GameItemGenerator.GenerateItem(GameItemTypes.UNKNOWN, EnumUtility.GetRandomEnumValue<GameItemRarity>(1, (int)BestQualityInStore), UnityEngine.Random.Range(0f, 1f));
+                GameItem item = GameItemGenerator.GenerateItem(GameItemTypes.UNKNOWN, EnumUtility.GetRandomEnumValue<GameItemRarity>(1, (int)BestQualityInStore));
                 int shelfLife = UnityEngine.Random.Range(2, 5);
                 m_Items.Add(item, shelfLife);
             }
