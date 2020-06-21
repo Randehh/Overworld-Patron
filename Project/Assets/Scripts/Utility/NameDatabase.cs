@@ -38,7 +38,9 @@ namespace Rondo.QuestSim.Utility {
                 "Night",
                 "Chaos",
                 "Hollow",
-                "Doom"
+                "Doom",
+                "Blood",
+                "Sin"
             };
 
             string[] partTwo = new string[] {
@@ -81,7 +83,11 @@ namespace Rondo.QuestSim.Utility {
                 "dagger",
                 "mark",
                 "breaker",
-                "shatter"
+                "shatter",
+                "borne",
+                "talon",
+                "mourne",
+
             };
 
             return partOne[Random.Range(0, partOne.Length)] + partTwo[Random.Range(0, partTwo.Length)];
@@ -126,7 +132,10 @@ namespace Rondo.QuestSim.Utility {
                     "wood",
                     "bay",
                     "more",
-                    "valley"
+                    "valley",
+                    "vale",
+                    "ford",
+                    "shire"
                 };
 
                 return partOne[Random.Range(0, partOne.Length)] + partTwo[Random.Range(0, partTwo.Length)];
@@ -181,7 +190,19 @@ namespace Rondo.QuestSim.Utility {
                     "Shattered",
                     "Unseen",
                     "Infinite",
-                    "Eternal"
+                    "Eternal",
+                    "Accursed",
+                    "Drowned",
+                    "Flayed",
+                    "Rabid",
+                    "Everlasting",
+                    "Sunset",
+                    "Forlorn",
+                    "Solidary",
+                    "Wretched",
+                    "Blinded",
+                    "Bound",
+                    "Gifted"
                 };
 
                 string[] partTwo = new string[] {
@@ -205,7 +226,14 @@ namespace Rondo.QuestSim.Utility {
                     "Scars",
                     "Shapers",
                     "Alliance",
-                    "Brigade"
+                    "Brigade",
+                    "Souls",
+                    "Conquest",
+                    "Covenant",
+                    "Guard",
+                    "Hunters",
+                    "Machina",
+                    "Crown"
                 };
 
                 return "The " + partOne[Random.Range(0, partOne.Length)] + " " + partTwo[Random.Range(0, partTwo.Length)];
@@ -239,7 +267,21 @@ namespace Rondo.QuestSim.Utility {
                     "Tempest",
                     "Refugees",
                     "Bandits",
-                    "Scourge"
+                    "Scourge",
+                    "Way",
+                    "Measure",
+                    "Theory",
+                    "Dogma",
+                    "Faith",
+                    "Paragons",
+                    "Pilgrims",
+                    "Wanderers",
+                    "Vagrants",
+                    "Accursed",
+                    "Blades",
+                    "Exalted",
+                    "Gifted",
+                    "Hallowed"
                 };
 
                 string[] partTwo = new string[] {
@@ -259,7 +301,24 @@ namespace Rondo.QuestSim.Utility {
                     "of Fury",
                     "of the Serene",
                     "of the World",
-                    "of the Hopeful"
+                    "of the Hopeful",
+                    "of Righteousness",
+                    "of Twilight",
+                    "of Dusk",
+                    "of Reverence",
+                    "of the Broken",
+                    "of the Everlasting",
+                    "of the Blind",
+                    "of the Radiant",
+                    "of the Dire",
+                    "of the Lake",
+                    "of the Enigma",
+                    "of Life",
+                    "of Death",
+                    "of the Colossus",
+                    "of the Nocturnal",
+                    "of the Afterlife",
+                    "of the Defiant"
                 };
 
                 return partOne[Random.Range(0, partOne.Length)] + " " + partTwo[Random.Range(0, partTwo.Length)];
@@ -393,7 +452,11 @@ namespace Rondo.QuestSim.Utility {
                     "lash",
                     "ame",
                     "lia",
-                    "lea"
+                    "lea",
+                    "an",
+                    "ie",
+                    "ed",
+                    "ward"
                 };
 
             string[] surNameSyllables = new string[] {

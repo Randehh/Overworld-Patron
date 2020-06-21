@@ -17,10 +17,6 @@ namespace Rondo.QuestSim.Inventory {
             if (rarity == GameItemRarity.UNKNOWN) rarity = EnumUtility.GetRandomEnumValue<GameItemRarity>(1);
 
             GameItem newItem = new GameItem(type, rarity, quality);
-
-            newItem.DisplayName = NameDatabase.GetItemName(newItem);
-            newItem.BaseAttackPower = Random.Range(1f, 3f);
-            newItem.BaseDefencePower = Random.Range(1f, 3f);
             return newItem;
         }
 

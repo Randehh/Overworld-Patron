@@ -14,7 +14,7 @@ namespace Rondo.QuestSim.Quests.Sources {
 
         //Display options
         public string DisplayName { get; set; }
-        public string RequestTitle { get { return "Personal request from " + DisplayName; } }
+        public string RequestTitle { get { return "Personal {0} request from " + DisplayName; } }
 
         public int QuestDifficulty { get { return Random.Range(0, 11); } }
 

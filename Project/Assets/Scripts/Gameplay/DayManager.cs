@@ -85,11 +85,11 @@ namespace Rondo.QuestSim.Gameplay {
 
             CurrentDay++;
 
-            OnNextDay();
-
             QuestManager.PostedQuests = UpdateQuestTimeLimits(QuestManager.PostedQuests, 0);
             QuestManager.Requests = UpdateQuestTimeLimits(QuestManager.Requests, 0);
             InventoryManager.Gold -= 4;
+
+            OnNextDay();
 
             StartCoroutine(SunRotateRoutine(true));
             NightFadeUI.Instance.Disable(()=> { });

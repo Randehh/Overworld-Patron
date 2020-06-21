@@ -13,9 +13,7 @@ namespace Rondo.QuestSim.UI.General {
 
         public GameObject content;
         public TextMeshProUGUI titleText;
-        public TextMeshProUGUI attackText;
-        public TextMeshProUGUI defenceText;
-        public TextMeshProUGUI overallPowerText;
+        public TextMeshProUGUI powerText;
         public Image icon;
 
         public TextMeshProUGUI leftClickHint;
@@ -55,10 +53,8 @@ namespace Rondo.QuestSim.UI.General {
 
             content.SetActive(true);
 
-            titleText.text = "<b>" + item.DisplayName + "</b>\n<size=18><i>" + item.Rarity.ToString() + "</size></i>";
-            attackText.text = ""+item.AttackPower;
-            defenceText.text = "" + item.DefencePower;
-            overallPowerText.text = "" + item.OverallPower;
+            titleText.text = item.DisplayName + "\n<i>" + item.Rarity.ToString() + "</i>";
+            powerText.text = "" + item.Power;
             icon.overrideSprite = item.GetIcon();
         }
 

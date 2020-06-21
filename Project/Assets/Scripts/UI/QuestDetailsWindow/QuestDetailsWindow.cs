@@ -21,6 +21,7 @@ namespace Rondo.QuestSim.UI.PostedQuests {
         public static string HIGHLIGHT_GROUP_ID = "quest_details_hero";
 
         public TextMeshProUGUI questTitle;
+        public TextMeshProUGUI durationText;
         public TextMeshProUGUI difficultyText;
         public TextMeshProUGUI successText;
         public Button closeButton;
@@ -145,7 +146,7 @@ namespace Rondo.QuestSim.UI.PostedQuests {
             gameObject.SetActive(false);
         }
 
-        private void CloseWindow() {
+        public void CloseWindow() {
             CurrentQuest = null;
 
             gameObject.SetActive(false);
@@ -163,8 +164,12 @@ namespace Rondo.QuestSim.UI.PostedQuests {
             WindowMode = mode;
             if (quest == CurrentQuest) {
                 bool targetStatus = !gameObject.activeSelf;
-                gameObject.SetActive(targetStatus);
-                if (!targetStatus) return;
+                if (!targetStatus) {
+                    CloseWindow();
+                    return;
+				} else {
+                    gameObject.SetActive(true);
+                }
             } else {
                 gameObject.SetActive(true);
             }
@@ -243,7 +248,8 @@ namespace Rondo.QuestSim.UI.PostedQuests {
                     break;
             }
 
-            questTitle.text = "<b><u>" + CurrentQuest.QuestSource.RequestTitle + "</u>\n<size=18>" + CurrentQuest.QuestTypeDisplay + " - </b><i>" + CurrentQuest.DurationInDays + " Day" + (CurrentQuest.DurationInDays > 1 ? "s" : "") + " duration</i></size>";
+            questTitle.text = CurrentQuest.QuestTitle;
+            durationText.text = GetDurationText();
             difficultyText.text = ""+ CurrentQuest.DifficultyLevel;
 
             handlerGoldReward.text = CurrentQuest.HandlerGoldRewardEstimate;
@@ -261,7 +267,8 @@ namespace Rondo.QuestSim.UI.PostedQuests {
 
         private void FindActiveHero() {
             foreach (QuestDetailsHero heroSection in m_HeroSections) {
-                heroSection.FindActiveHero();
+                HeroInstance hero = heroSection.FindActiveHero();
+                SetSelectedHero(hero, heroSection.HeroNumber);
             }
         }
 
@@ -360,6 +367,25 @@ namespace Rondo.QuestSim.UI.PostedQuests {
 
             FocusBoxManager.Instance.ReleaseBoxes(m_FocusBoxes.ToArray());
             m_FocusBoxes.Clear();
+        }
+
+        private string GetDurationText() {
+            switch (WindowMode) {
+                case QuestDetailsWindowMode.SETUP:
+                case QuestDetailsWindowMode.HERO_SELECT:
+                case QuestDetailsWindowMode.POSTED_REVIEW:
+                    return "Quest length: " + CurrentQuest.DurationInDays + " day" + (CurrentQuest.DurationInDays == 1 ? "" : "s");
+
+                case QuestDetailsWindowMode.COMPLETED:
+                    return "Quest completed";
+
+                case QuestDetailsWindowMode.ACTIVE_REVIEW:
+                    return CurrentQuest.DaysLeftOnQuest + " day" + (CurrentQuest.DaysLeftOnQuest == 1 ? "" : "s") + " left";
+
+                default:
+                    return "Unknown duration";
+
+            }
         }
     }
 

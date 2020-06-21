@@ -15,6 +15,7 @@ namespace Rondo.QuestSim.UI.PostedQuests {
     public class QuestDetailsHero : MonoBehaviour {
 
         [Header("Heroes")]
+        public TextMeshProUGUI heroNumberText;
         public ReputationHeroInstanceUI heroSelectedInstance;
         public Button heroSelectButton;
 
@@ -36,6 +37,7 @@ namespace Rondo.QuestSim.UI.PostedQuests {
         public RectTransform heroParent;
 
         public List<HeroInstance> AvailableHeroes { get; set; }
+        public int HeroNumber { get { return m_HeroNumber; } }
 
         private QuestInstance CurrentQuest { get { return QuestDetailsWindow.Instance.CurrentQuest; } }
         private QuestDetailsWindowMode WindowMode { get { return QuestDetailsWindow.Instance.WindowMode; } }
@@ -102,6 +104,7 @@ namespace Rondo.QuestSim.UI.PostedQuests {
 
         public void Initialize(int heroNumber) {
             m_HeroNumber = heroNumber;
+            heroNumberText.text = (heroNumber + 1) + ".";
         }
 
         public void Reload() {
@@ -110,30 +113,30 @@ namespace Rondo.QuestSim.UI.PostedQuests {
                     SetNoHero();
                     UIHighlighter.Instance.GetGroup(QuestDetailsWindow.HIGHLIGHT_GROUP_ID).AddObjects(highlightsRewards, UIHighlighter.Instance.redHighlightColor, highlightsRewards[0].color);
                     break;
+
                 case QuestDetailsWindowMode.HERO_SELECT:
                     UIHighlighter.Instance.GetGroup(QuestDetailsWindow.HIGHLIGHT_GROUP_ID).AddObjects(highlightsHeroSelect, UIHighlighter.Instance.redHighlightColor, highlightsHeroSelect[0].color);
                     break;
+
                 case QuestDetailsWindowMode.POSTED_REVIEW:
                     SetNoHero();
                     break;
+
                 case QuestDetailsWindowMode.ACTIVE_REVIEW:
                     FindActiveHero();
                     break;
+
                 case QuestDetailsWindowMode.COMPLETED:
                     FindActiveHero();
                     break;
             }
 
             heroRewardItemInstance.GetComponent<Button>().enabled = WindowMode == QuestDetailsWindowMode.SETUP;
-
-            heroGoldRewardInput.gameObject.SetActive(WindowMode == QuestDetailsWindowMode.SETUP);
-            heroGoldRewardText.gameObject.SetActive(WindowMode != QuestDetailsWindowMode.SETUP);
-
+            heroGoldRewardInput.interactable = WindowMode == QuestDetailsWindowMode.SETUP;
             heroSelectButton.enabled = WindowMode == QuestDetailsWindowMode.HERO_SELECT;
 
-            heroGoldRewardText.text = ""+CurrentQuest.GoldRewards[m_HeroNumber].GoldCount;
             heroRewardItemInstance.SetItem(CurrentQuest.ItemRewards[m_HeroNumber]);
-            if(heroGoldRewardInput.gameObject.activeSelf) heroGoldRewardInput.text = "0";
+            heroGoldRewardInput.text = "" + CurrentQuest.GoldRewards[m_HeroNumber].GoldCount;
 
             CheckAcceptButtonStatus();
             CheckPostButtonStatus();
@@ -152,20 +155,20 @@ namespace Rondo.QuestSim.UI.PostedQuests {
             Quests.Rewards.QuestRewardItem previousItem = CurrentQuest.ItemRewards[m_HeroNumber];
 
             heroRewardItemInstance.SetItem(item.Item);
-            Quests.Rewards.QuestRewardItem nextItem = CurrentQuest.ItemRewards[m_HeroNumber] = new Quests.Rewards.QuestRewardItem(item.Item);
+            CurrentQuest.ItemRewards[m_HeroNumber] = new Quests.Rewards.QuestRewardItem(item.Item);
 
             if (previousItem != null) InventoryManager.MoveItemToOwned(previousItem.Item);
             InventoryManager.MoveItemToReserved(item.Item);
-            previousItem = nextItem;
 
             heroRewardItemRemove.interactable = true;
 
             CheckPostButtonStatus();
         }
 
-        public void FindActiveHero() {
+        public HeroInstance FindActiveHero() {
             HeroInstance hero = QuestManager.ActiveQuests[CurrentQuest][m_HeroNumber];
             heroSelectedInstance.ApplyHero(hero);
+            return hero;
         }
 
         public void SetNoHero() {

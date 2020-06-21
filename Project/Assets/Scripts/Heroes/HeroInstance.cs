@@ -10,7 +10,6 @@ namespace Rondo.QuestSim.Heroes {
     public class HeroInstance {
 
         public static int BASE_POWER_PER_LEVEL = 25;
-        public static int LEVELS_PER_QUEST_STAR = 5;
 
         public string DisplayName { get { return GetDisplayName(); } set { m_DisplayName = value; } }
         public string Nickname { get; set; }
@@ -23,12 +22,10 @@ namespace Rondo.QuestSim.Heroes {
 
         public int Level { get { return m_Level; } }
         public float LevelProgress { get { return HeroState != HeroStates.UNDISCOVERED ? m_LevelProgress : 0; } }
-        public int PowerLevel { get { return Mathf.RoundToInt((EquipmentLevel * 0.1f) + BasePowerLevel); } }
+        public float PowerLevel { get { return (EquipmentLevel * 0.1f) + BasePowerLevel; } }
         public int BasePowerLevel { get { return Level * BASE_POWER_PER_LEVEL; } }
 
-        public Dictionary<QuestTypes, float> QuestTypePreferences { get; set; }
-        public int QuestPrefDifficulty { get { return Mathf.RoundToInt(QuestPrefDifficultyFloat); } }
-        public float QuestPrefDifficultyFloat { get { return Level / LEVELS_PER_QUEST_STAR; } }
+        public float QuestPrefDifficulty { get { return Level / QuestConstants.LEVELS_PER_STAR; } }
         public float QuestPrefRewardItem { get; set; }
         public float QuestPrefRewardGold { get; set; }
 
@@ -45,7 +42,6 @@ namespace Rondo.QuestSim.Heroes {
         private HeroStates m_HeroState = HeroStates.IDLE;
 
         public HeroInstance() {
-            QuestTypePreferences = new Dictionary<QuestTypes, float>();
             HeroState = HeroStates.UNDISCOVERED;
 
             OnExperienceChange += CalculateLevels;

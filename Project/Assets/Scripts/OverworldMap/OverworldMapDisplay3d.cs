@@ -40,7 +40,6 @@ namespace Rondo.QuestSim.Overworld {
 			BoxCollider parentBoxCollider = tagParent.GetComponent<BoxCollider>();
 			Vector3 parentSize = parentBoxCollider.size;
 			tagTransform.localPosition = new Vector3((position.x * parentSize.x) - (parentSize.x * 0.5f), 0, (position.y * -parentSize.z) + (parentSize.z * 0.5f)) + tagOffset;
-			Debug.Log("Local pos set to " + parentSize);
 			tagClone.SetActive(true);
 
 			m_CurrentTags.Add(tagClone);

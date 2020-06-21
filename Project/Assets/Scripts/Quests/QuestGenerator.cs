@@ -21,7 +21,7 @@ namespace Rondo.QuestSim.Quests {
 
         private static WeightedRandom<int> m_PartySizeChoser = new WeightedRandom<int>(
             new int[3] { 1, 2, 3 },
-            new int[3] { 20, 8, 2 });
+            new int[3] { 10, 4, 1 });
 
         public static int daysSinceHeroRecruit = Random.Range(10, 20);
         public static int daysSinceFactionRecruit = Random.Range(25, 35);
@@ -88,7 +88,7 @@ namespace Rondo.QuestSim.Quests {
             return quest;
         }
 
-        private static GameItemRarity GetItemRarityForDifficulty(int difficulty) {
+        private static GameItemRarity GetItemRarityForDifficulty(float difficulty) {
             return (GameItemRarity) Mathf.Clamp(Mathf.RoundToInt(difficulty / 2f), 0, (int)GameItemRarity.LEGENDARY);
         }
 

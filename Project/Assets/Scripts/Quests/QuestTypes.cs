@@ -7,7 +7,7 @@ namespace Rondo.QuestSim.Quests {
         ASSASSINATION,
         MONSTER_HUNTING,
         ITEM_GATHERING,
-        ITEM_DELIVERY
+        MERCENARY_WORK
     }
 
 }

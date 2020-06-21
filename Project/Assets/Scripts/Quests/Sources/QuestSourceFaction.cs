@@ -10,7 +10,7 @@ namespace Rondo.QuestSim.Quests.Sources {
     public class QuestSourceFaction : IQuestSource {
 
         private static int MIN_HEROES_PER_FACTION = 2;
-        private static int MAX_HEROES_PER_FACTION = 6;
+        private static int MAX_HEROES_PER_FACTION = 3;
 
         public QuestSourceFaction(ReputationBiases personality) {
             personalityType = personality;
@@ -19,7 +19,7 @@ namespace Rondo.QuestSim.Quests.Sources {
 
         //Display options
         public string DisplayName { get; set; }
-        public string RequestTitle { get { return "Request from " + DisplayName; } }
+        public string RequestTitle { get { return "{0} request from " + DisplayName; } }
 
         public Sprite displayEmblem;
 		public Color FactionColor { get; set; }
@@ -71,7 +71,7 @@ namespace Rondo.QuestSim.Quests.Sources {
             float totalQuestDifficulty = 0;
 
             foreach(HeroInstance hero in Heroes) {
-                totalQuestDifficulty += hero.QuestPrefDifficultyFloat;
+                totalQuestDifficulty += hero.QuestPrefDifficulty;
             }
 
             totalQuestDifficulty /= Heroes.Count;

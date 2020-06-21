@@ -12,6 +12,9 @@ namespace Rondo.Generic.Utility {
             return char.ToUpperInvariant(text[0]) + text.Substring(1, text.Length - 1).ToLowerInvariant();
         }
 
+        public static string ToUpperCaseFirstCharacter(this string text) {
+            return char.ToUpper(text[0]) + text.Substring(1);
+        }
     }
 
 }

@@ -19,19 +19,13 @@ namespace Rondo.QuestSim.UI.ActiveQuests {
         public RectTransform postedQuestsParent;
         public RectTransform activeQuestsParent;
         public RectTransform requestQuestsParent;
-        public Button openCloseToggle;
 
         public Color questTurnColor1;
         public Color requestTimeColor;
 
-        private RectTransform m_RectTransform;
-
         private void Awake() {
             Instance = this;
 
-            m_RectTransform = GetComponent<RectTransform>();
-
-            openCloseToggle.onClick.AddListener(ToggleOpenCloseState);
             gameObject.SetActive(false);
         }
 

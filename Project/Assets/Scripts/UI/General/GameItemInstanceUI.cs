@@ -16,6 +16,7 @@ namespace Rondo.QuestSim.UI.General {
 
         public Image icon;
         public TextMeshProUGUI titleText;
+        public TextMeshProUGUI powerText;
 
         public GameItem Item { get; private set; }
         public GameItemPopupModes PopupMode { get; private set; }
@@ -45,10 +46,12 @@ namespace Rondo.QuestSim.UI.General {
 
             if (item == null) {
                 titleText.text = "-";
+                powerText.text = "-";
                 icon.overrideSprite = SpriteFetcher.Instance.itemIcons.unknownIcon;
                 GetComponent<Image>().color = SpriteFetcher.Instance.itemIcons.colorCommon;
             } else {
                 titleText.text = item.DisplayName;
+                powerText.text = ""+item.Power;
                 icon.overrideSprite = item.GetIcon();
                 GetComponent<Image>().color = item.GetItemColor();
             }

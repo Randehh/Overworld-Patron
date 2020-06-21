@@ -13,6 +13,7 @@ namespace Rondo.QuestSim.UI.ActiveQuests {
 
         public TextMeshProUGUI nameText;
         public TextMeshProUGUI difficultyText;
+        public TextMeshProUGUI daysLeftText;
 
         private Button m_Button;
         private QuestInstance m_QuestInstance;
@@ -51,24 +52,27 @@ namespace Rondo.QuestSim.UI.ActiveQuests {
         }
 
         private void UpdateText() {
-            string titleText = "<b>" + m_QuestInstance.QuestSource.RequestTitle + "</b>\n<i>";
-
-            switch (m_QuestMode) {
-                case QuestDetailsWindowMode.SETUP:
-                case QuestDetailsWindowMode.POSTED_REVIEW:
-                    int expiresInDays = m_QuestInstance.DaysLeftOnPost;
-                    titleText += "Expires in <b>" + expiresInDays + "</b> day" + (expiresInDays > 1 ? "s" : "");
-                    break;
-                case QuestDetailsWindowMode.ACTIVE_REVIEW:
-                    int daysLeft = m_QuestInstance.DaysLeftOnQuest;
-                    titleText += "<b>" + daysLeft + "</b> day" + (daysLeft > 1 ? "s" : "") + " left until completed";
-                    break;
-                default:
-                    break;
-            }
-
-            nameText.text = titleText;
+            nameText.text = m_QuestInstance.QuestTitle;
             difficultyText.text = "" + m_QuestInstance.DifficultyLevel;
+
+            string daysToDisplay = "";
+			switch (m_QuestMode) {
+                case QuestDetailsWindowMode.SETUP:
+                case QuestDetailsWindowMode.HERO_SELECT:
+                case QuestDetailsWindowMode.POSTED_REVIEW:
+                    daysToDisplay += m_QuestInstance.DaysLeftOnPost;
+                    break;
+
+                case QuestDetailsWindowMode.COMPLETED:
+                    daysToDisplay += "-";
+                    break;
+
+                case QuestDetailsWindowMode.ACTIVE_REVIEW:
+                    daysToDisplay += m_QuestInstance.DaysLeftOnQuest;
+                    break;
+
+            }
+            daysLeftText.text = daysToDisplay;
         }
     }
 

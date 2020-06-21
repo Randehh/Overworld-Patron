@@ -14,12 +14,8 @@ namespace Rondo.QuestSim.UI.Blacksmith {
         public RectTransform buyItemsParent;
         public RectTransform contractsParent;
 
-        private RectTransform m_RectTransform;
-
         private void Awake() {
             Instance = this;
-
-            m_RectTransform = GetComponent<RectTransform>();
 
             gameObject.SetActive(false);
         }

@@ -22,7 +22,6 @@ namespace Rondo.QuestSim.UI.Reputation {
         private Coroutine m_UpdateExperienceRoutine = null;
         private float m_CurrentExperience = 0;
         private CanvasGroup m_CanvasGroup;
-        private Coroutine m_UpdateAlphaRoutine = null;
 
         void Awake() {
             m_CanvasGroup = GetComponent<CanvasGroup>();
@@ -35,7 +34,12 @@ namespace Rondo.QuestSim.UI.Reputation {
             Hero.OnStateChange -= UpdateHeroStatus;
         }
 
-        public void ApplyHero(HeroInstance hero) {
+		void OnEnable() {
+            UpdateProgressInstant();
+            UpdateHeroStatus();
+        }
+
+		public void ApplyHero(HeroInstance hero) {
             if(Hero != null) {
                 Hero.OnExperienceChange -= UpdateProgressSmooth;
                 Hero.OnStateChange -= UpdateHeroStatus;
@@ -87,7 +91,7 @@ namespace Rondo.QuestSim.UI.Reputation {
 
         private IEnumerator SmoothExperienceUpdate(float targetExp) {
             while(Mathf.Abs(targetExp - m_CurrentExperience) >= 0.01f) {
-                m_CurrentExperience = Mathf.Lerp(m_CurrentExperience, targetExp, 0.1f);
+                m_CurrentExperience = Mathf.Lerp(m_CurrentExperience, targetExp, 0.025f);
                 SetExperience(m_CurrentExperience);
                 yield return null;
             }
