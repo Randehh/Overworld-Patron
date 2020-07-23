@@ -72,7 +72,7 @@ namespace Rondo.QuestSim.UI.PostedQuests {
 
             heroRewardItemInstance.GetComponent<Button>().onClick.AddListener(() => {
                 InventoryWindow.Instance.SetQuestItemMode(true, SetSelectedItem);
-                RightSideSwitch.Instance.ActivateObject(InventoryWindow.Instance.gameObject, false);
+                InventoryWindow.Instance.gameObject.SetActive(true);
             });
 
             heroRewardItemRemove.onClick.AddListener(() => {
@@ -97,7 +97,7 @@ namespace Rondo.QuestSim.UI.PostedQuests {
                     }
                 }
 
-                RightSideSwitch.Instance.ActivateObject(ReputationUI.Instance.gameObject, false);
+                ReputationUI.Instance.gameObject.SetActive(true);
                 ReputationUI.Instance.SetAvailableHeroes(AvailableHeroes, SetSelectedHero);
             });
         }

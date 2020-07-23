@@ -35,8 +35,8 @@ namespace Rondo.QuestSim.UI.Reputation {
             gameObject.SetActive(false);
         }
 
-        private void ToggleOpenCloseState() {
-            RightSideSwitch.Instance.ActivateObject(gameObject);
+        public void ToggleOpenCloseState() {
+            gameObject.SetActive(!gameObject.activeSelf);
         }
 
         public void AddReputationTracker(ReputationTracker tracker) {

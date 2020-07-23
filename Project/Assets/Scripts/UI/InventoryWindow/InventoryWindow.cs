@@ -32,8 +32,8 @@ namespace Rondo.QuestSim.UI.Inventory {
             openCloseToggle.onClick.AddListener(ToggleOpenCloseState);
         }
 
-        private void ToggleOpenCloseState() {
-            RightSideSwitch.Instance.ActivateObject(gameObject);
+        public void ToggleOpenCloseState() {
+            gameObject.SetActive(!gameObject.activeSelf);
         }
 
         private void OnEnable() {
