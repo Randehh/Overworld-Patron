@@ -137,7 +137,7 @@ namespace Rondo.QuestSim.UI.PostedQuests {
                     CurrentQuest.GoldRewards[i].GoldCount = SelectedGoldRewards[i];
                 }
 
-                InventoryManager.Gold -= CurrentQuest.GetTotalGoldCount();
+                InventoryManager.ModifyGold(-CurrentQuest.GetTotalGoldCount(), "Deposit money for quest");
 
                 CloseWindow();
             });

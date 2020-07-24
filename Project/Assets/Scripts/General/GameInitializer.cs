@@ -35,7 +35,7 @@ namespace Rondo.QuestSim.General {
 		}
 
         private void Start() {
-            InventoryManager.Gold = 100;
+			InventoryManager.ModifyGold(100, "Starting funds");
             InventoryManager.Stars = 0;
         }
 

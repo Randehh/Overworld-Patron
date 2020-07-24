@@ -24,7 +24,7 @@ namespace Rondo.QuestSim.UI.Main {
         private void Awake() {
             endDayButton.onClick.AddListener(DayManager.Instance.EndDay);
             DayManager.Instance.OnNextDay += () => { daysText.text = "Day <b>" + DayManager.Instance.CurrentDay; };
-            InventoryManager.OnGoldChange += (gold) => { goldText.text = gold + " <b>Gold"; };
+            InventoryManager.OnGoldChange += (gold, goldChange, description) => { goldText.text = gold + " <b>Gold"; };
             InventoryManager.OnStarsChange += (stars) => { starsText.text = stars + " <b>Stars"; };
         }
     }

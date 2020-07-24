@@ -87,7 +87,7 @@ namespace Rondo.QuestSim.Gameplay {
 
             QuestManager.PostedQuests = UpdateQuestTimeLimits(QuestManager.PostedQuests, 0);
             QuestManager.Requests = UpdateQuestTimeLimits(QuestManager.Requests, 0);
-            InventoryManager.Gold -= 4;
+            InventoryManager.ModifyGold(-4, "Daily upkeep");
 
             OnNextDay();
 

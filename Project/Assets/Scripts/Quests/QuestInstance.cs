@@ -164,7 +164,7 @@ namespace Rondo.QuestSim.Quests {
                 return false;
             }else {
                 if (HandlerItemReward != null) InventoryManager.OwnedItems.Add(HandlerItemReward.Item);
-                InventoryManager.Gold += Mathf.RoundToInt(HandlerAverageExpectedGoldReward * UnityEngine.Random.Range(HANDLER_GOLD_VARIANCE_MIN, HANDLER_GOLD_VARIANCE_MAX));
+                InventoryManager.ModifyGold(Mathf.RoundToInt(HandlerAverageExpectedGoldReward * UnityEngine.Random.Range(HANDLER_GOLD_VARIANCE_MIN, HANDLER_GOLD_VARIANCE_MAX)), "Quest completed");
                 InventoryManager.Stars += Mathf.RoundToInt(DifficultyLevel);
                 return true;
             }
@@ -173,7 +173,7 @@ namespace Rondo.QuestSim.Quests {
         public void RefundQuestRewards(bool refundGold, bool refundItem) {
             if (refundGold) {
                 foreach (QuestRewardGold goldReward in GoldRewards) {
-                    InventoryManager.Gold += goldReward.GoldCount;
+                    InventoryManager.ModifyGold(goldReward.GoldCount, "Quest refunded");
                 }
             }
 

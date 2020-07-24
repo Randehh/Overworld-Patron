@@ -8,15 +8,14 @@ namespace Rondo.QuestSim.Inventory {
 
     public static class InventoryManager {
 
-        public static int Gold { get { return m_Gold; } set { m_Gold = value; OnGoldChange(value); } }
+        public static int Gold { get; private set; }
         public static int Stars { get { return m_Stars; } set { m_Stars = value; OnStarsChange(value); } }
         public static List<GameItem> OwnedItems { get; set; }
         public static List<GameItem> ReservedItems { get; set; }
 
-        public static Action<int> OnGoldChange = delegate { };
+        public static Action<int, int, string> OnGoldChange = delegate { };
         public static Action<int> OnStarsChange = delegate { };
 
-        private static int m_Gold = 0;
         private static int m_Stars = 0;
 
         public static void Initialize() {
@@ -30,6 +29,11 @@ namespace Rondo.QuestSim.Inventory {
             for (int i = 0; i < 2; i++) {
                 OwnedItems.Add(GameItemGenerator.GenerateItem(GameItemTypes.UNKNOWN, GameItemRarity.UNCOMMON));
             }
+		}
+
+        public static void ModifyGold(int goldChange, string reason) {
+            Gold += goldChange;
+            OnGoldChange(Gold, goldChange, reason);
 		}
 
         public static void MoveItemToReserved(GameItem item) {

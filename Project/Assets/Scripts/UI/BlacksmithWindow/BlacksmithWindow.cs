@@ -32,7 +32,7 @@ namespace Rondo.QuestSim.UI.Blacksmith {
         public void AttemptBuyItem(GameItemInstanceUI item) {
             int price = item.Item.BuyPrice;
             if(price <= InventoryManager.Gold) {
-                InventoryManager.Gold -= price;
+                InventoryManager.ModifyGold(-price, "Bought item: " + item.Item.DisplayName);
                 BlacksmithManager.RemoveItem(item.Item);
                 InventoryManager.OwnedItems.Add(item.Item);
 
@@ -43,7 +43,7 @@ namespace Rondo.QuestSim.UI.Blacksmith {
 
         public void AttemptSellItem(GameItemInstanceUI item) {
             int price = item.Item.SellPrice;
-            InventoryManager.Gold += price;
+            InventoryManager.ModifyGold(price, "Sold item: " + item.Item.DisplayName);
             InventoryManager.OwnedItems.Remove(item.Item);
 
             InventoryWindow.Instance.RefreshInventory();
